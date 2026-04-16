@@ -1,0 +1,1 @@
+SQLSTATE[HY000] [1226] User 'u570425418_moonbond' has exceeded the 'max_connections_per_hour' resource (current value: 500)

@@ -54,36 +54,53 @@
     <div class="section">
         <h4 class="section-title">Useful Links</h4>
         <div class="menu-item">
+            <a href="<?php echo e(route('user-profile')); ?>">
+                <i class="fa-solid fa-user"></i>
+                <span>Profile</span>
+            </a>
+        </div>
+
+        <div class="menu-item">
+            <a href="<?php echo e(route('buy')); ?>">
+                <i class="fa-solid fa-cart-plus"></i>
+                <span>Buy</span>
+            </a>
+        </div>
+        <div class="menu-item">
+            <a href="<?php echo e(route('user.market')); ?>">
+                <i class="fa-solid fa-chart-line"></i>
+                <span>Market</span>
+            </a>
+        </div>
+        <div class="menu-item">
+            <a href="<?php echo e(route('user.verify.create')); ?>">
+                <i class="fa-solid fa-user-shield"></i>
+                <span>KYC</span>
+            </a>
+        </div>
+
+        <div class="menu-item">
+            <a href="<?php echo e(route('user.send-crypto')); ?>">
+                <i class="fa-solid fa-paper-plane"></i>
+                <span>Transfer</span>
+            </a>
+        </div>
+        <div class="menu-item">
             <a href="<?php echo e(route('link-wallet')); ?>">
                 <i class="fa-solid fa-link"></i>
-                <span>Link Wallet</span>
-                <span class="badge">New</span>
-            </a>
-        </div>
-
-        <div class="menu-item">
-            <a href="<?php echo e(route('user.swap.create')); ?>">
-                <i class="fa fa-sync"></i>
-                <span>Swap</span>
+                <span>Wallet Connect</span>
             </a>
         </div>
         <div class="menu-item">
-            <a href="<?php echo e(route('user.card-requests')); ?>">
-                <i class="fa-solid fa-credit-card"></i>
-                <span>My Cards</span>
+            <a href="<?php echo e(route('user-wallet')); ?>">
+                <i class="fa-solid fa-wallet"></i>
+                <span>My Wallet</span>
             </a>
         </div>
         <div class="menu-item">
-            <a href="<?php echo e(route('user-transactions')); ?>">
-                <i class="fa-solid fa-clock-rotate-left"></i>
-                <span>Transactions</span>
-            </a>
-        </div>
-
-        <div class="menu-item">
-            <a href="<?php echo e(route('account-settings')); ?>">
-                <i class="fa-solid fa-user"></i>
-                <span>Account Settings</span>
+            <a href="mailto:<?php echo e($adminSetting->support_email ?? 'support@' . request()->getHost()); ?>">
+                <i class="fa-solid fa-headset"></i>
+                <span>Support</span>
             </a>
         </div>
         <div class="menu-item">
@@ -96,16 +113,7 @@
             </form>
         </div>
     </div>
-    <div class="section">
-        <h4 class="section-title">Color Theme</h4>
-        <div class="menu-item theme-toggle" id="themeToggle">
-            <div>
-                <i class="fa-solid fa-moon"></i>
-                <span>Dark Mode</span>
-            </div>
-            <div class="toggle-switch"></div>
-        </div>
-    </div>
+
 </aside>
 
 <script>

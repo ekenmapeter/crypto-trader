@@ -33,6 +33,14 @@ class GuestController extends Controller
         return view('guest.terms-conditions', compact('title'));
     }
 
+    public function privacyPolicy()
+    {
+
+        $title = 'Privacy Policy';
+
+        return view('guest.privacy', compact('title'));
+    }
+
 
 
     public function getCryptoRate(Request $request)

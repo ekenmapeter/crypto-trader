@@ -33,6 +33,7 @@ use App\Http\Controllers\SwapController;
 /* General Route */
 Route::get('/', [GuestController::class, 'home'])->name('/');
 Route::get('/terms-conditions', [GuestController::class, 'termsConditions'])->name('terms-conditions');
+Route::get('/privacy-policy', [GuestController::class, 'privacyPolicy'])->name('privacy-policy');
 Route::get('/calculator', [GuestController::class, 'calculator'])->name('calculator');
 Route::get('/crypto-calculator', [GuestController::class, 'cryptoCalculator'])->name('crypto-calculator');
 Route::get('categories', [CardCalculatorController::class, 'getCardCategory'])->name('categories');

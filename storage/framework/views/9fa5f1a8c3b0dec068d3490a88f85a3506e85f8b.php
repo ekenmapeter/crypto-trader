@@ -109,7 +109,7 @@
         <div class="px-2 flex items-center justify-between">
             <div class="flex items-center gap-3">
                 <div class="w-1.5 h-6 bg-blue-600 rounded-full"></div>
-                <h3 class="font-black text-gray-900 uppercase text-xs tracking-widest">My Portfolio Assets</h3>
+                <h3 class="font-black text-white uppercase text-xs tracking-widest">My Portfolio Assets</h3>
             </div>
             <div class="flex items-center gap-2">
                 <span class="w-2 h-2 bg-emerald-500 rounded-full animate-pulse"></span>
