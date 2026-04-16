@@ -94,7 +94,7 @@ Route::get('/restrict-fund', [AdministratorController::class, 'restrictFund'])->
 
 Route::post('qrcode-upload', [CryptoController::class, 'qrcodeUpload'])->name('qrcode-upload');
 Route::post('edit-crypto', [CryptoController::class, 'editCoin'])->name('edit-crypto');
-Route::post('edit-subcard', [AdministratorController::class, 'updateSubcard'])->name('edit-subcard');
+Route::post('edit-subcard', [AdministratorController::class, 'updateSubcard'])->name('edit-subcard.post');
 Route::post('create-notify', [AdministratorController::class, 'createNotify'])->name('create-notify');
 Route::post('create-subcard', [AdministratorController::class, 'createSubcard'])->name('create-subcard');
 Route::post('update-admin-settings', [AdministratorController::class, 'updateAdminSettings'])->name('update-admin-settings');
