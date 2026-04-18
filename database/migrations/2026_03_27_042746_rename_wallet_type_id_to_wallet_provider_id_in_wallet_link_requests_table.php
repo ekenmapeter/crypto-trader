@@ -14,9 +14,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::table('wallet_link_requests', function (Blueprint $table) {
-            $table->dropForeign(['wallet_type_id']);
-        });
+        try {
+            Schema::table('wallet_link_requests', function (Blueprint $table) {
+                $table->dropForeign(['wallet_type_id']);
+            });
+        } catch (\Exception $e) {
+            // Continue if foreign key doesn't exist
+        }
 
         DB::statement('ALTER TABLE wallet_link_requests CHANGE wallet_type_id wallet_provider_id INT(10) UNSIGNED NOT NULL');
     }
