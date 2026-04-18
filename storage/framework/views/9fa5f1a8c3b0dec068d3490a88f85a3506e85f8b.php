@@ -161,7 +161,7 @@
     
     <div class="space-y-4">
         <div class="px-2 flex items-center justify-between">
-            <h3 class="font-black text-gray-900 uppercase text-xs tracking-widest">Recent Traction</h3>
+            <h3 class="font-black text-white uppercase text-sm tracking-widest">Recent Transaction</h3>
             <a href="<?php echo e(route('user-transactions')); ?>"
                 class="text-[10px] font-black text-blue-600 uppercase hover:underline">View All</a>
         </div>

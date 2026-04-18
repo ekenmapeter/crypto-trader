@@ -25,8 +25,11 @@
                 <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
                     <?php $__currentLoopData = $walletTypes; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $coin): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                         <button type="button" @click="selectCoin('<?php echo e($coin->id); ?>', '<?php echo e($coin->payment_wallet_address); ?>', '<?php echo e($coin->payment_qr_code ? '/images/crypto_logo/' . $coin->payment_qr_code : ''); ?>')"
-                            class="flex flex-col items-center justify-center p-6 bg-gray-50 border-2 border-transparent hover:border-blue-500 rounded-[20px] transition-all hover:-translate-y-1 hover:shadow-lg focus:outline-none">
-                            <h3 class="font-black text-gray-900 mt-3 text-sm group-hover:text-blue-600"><?php echo e($coin->coin_name); ?></h3>
+                            class="group flex flex-col items-center justify-center p-6 bg-gray-50 border-2 border-transparent hover:border-blue-500 rounded-[20px] transition-all hover:-translate-y-1 hover:shadow-lg focus:outline-none">
+                            <div class="w-12 h-12 mb-2 p-2 bg-white rounded-[12px] shadow-sm group-hover:scale-110 transition-transform">
+                                <img src="/images/crypto_logo/<?php echo e($coin->logo); ?>" alt="<?php echo e($coin->coin_name); ?>" class="w-full h-full object-contain filter drop-shadow-sm">
+                            </div>
+                            <h3 class="font-black text-gray-900 mt-1 text-sm group-hover:text-blue-600 transition-colors"><?php echo e($coin->coin_name); ?></h3>
                             <p class="text-[10px] font-bold text-gray-400 uppercase tracking-widest"><?php echo e($coin->short_code); ?></p>
                         </button>
                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
